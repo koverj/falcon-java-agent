@@ -23,7 +23,7 @@ public class CoverageRealWorldApp {
     }
 
     @Test
-    void testCanLogin() {
+    void testSimpleLocators() {
         $("body > app-root > app-layout-header > nav > div > ul > li:nth-child(2) > a").click();
         $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > fieldset:nth-child(2) > input").setValue("sergio_89@ukr.net");
         $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > fieldset:nth-child(3) > input").setValue("12345678");
@@ -31,11 +31,25 @@ public class CoverageRealWorldApp {
     }
 
     @Test
-    void testCanLoginRelativeLocators() {
+    void testRelativeLocators() {
         SelenideElement appRootElement = $("body > app-root");
         SelenideElement navBarElement = appRootElement.$("app-layout-header > nav");
         SelenideElement link = navBarElement.$("div > ul > li:nth-child(2) > a");
         link.click();
     }
 
+    @Test
+    void testSimpleAndRelativeLocators() {
+        $("body > app-root > app-layout-header > nav > div > ul > li:nth-child(2) > a").click();
+        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > fieldset:nth-child(2) > input").setValue("sergio_89@ukr.net");
+        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > fieldset:nth-child(3) > input").setValue("12345678");
+        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > button").click();
+
+        Selenide.open(Configuration.baseUrl);
+
+        SelenideElement appRootElement = $("body > app-root");
+        SelenideElement navBarElement = appRootElement.$("app-layout-header > nav");
+        SelenideElement link = navBarElement.$("div > ul > li:nth-child(2) > a");
+        link.click();
+    }
 }
