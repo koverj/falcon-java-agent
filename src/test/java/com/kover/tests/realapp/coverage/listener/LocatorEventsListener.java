@@ -8,6 +8,8 @@ import com.kover.tests.realapp.coverage.SimpleLocatorStorage;
 import java.util.LinkedList;
 import java.util.UUID;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
 /**
  * Created by alpa on 2/25/20
  */
@@ -28,6 +30,7 @@ public class LocatorEventsListener implements LogEventListener {
         String subject = currentLog.getSubject();
 //         TODO find way to changes this if
         if (subject.contains("(") || subject.contains("$")) {
+            String currentUrl = getWebDriver().getCurrentUrl();
             String uuid = UUID.randomUUID().toString();
             LinkedList<Locator> locators = storage.get();
             if (!locators.isEmpty()) {
@@ -35,18 +38,18 @@ public class LocatorEventsListener implements LogEventListener {
                 if (previousLocator != null) {
                     if (previousLocator.getSubject().contains("$")) {
                         String parentUuid = previousLocator.getUuid();
-                        saveLocatorToStorage(uuid, subject, currentLog.getElement(), parentUuid);
+                        saveLocatorToStorage(uuid, currentUrl, subject, currentLog.getElement(), parentUuid);
                     } else {
-                        saveLocatorToStorage(uuid, subject, currentLog.getElement(), null);
+                        saveLocatorToStorage(uuid, currentUrl, subject, currentLog.getElement(), null);
                     }
                 }
             } else {
-                saveLocatorToStorage(uuid, subject, currentLog.getElement(), null);
+                saveLocatorToStorage(uuid, currentUrl, subject, currentLog.getElement(), null);
             }
         }
     }
 
-    private void saveLocatorToStorage(String uuid, String subject, String locator, String parentUuid) {
-        storage.put(new Locator(uuid, subject, locator, parentUuid));
+    private void saveLocatorToStorage(String uuid, String url, String subject, String locator, String parentUuid) {
+        storage.put(new Locator(uuid, url, subject, locator, parentUuid));
     }
 }
