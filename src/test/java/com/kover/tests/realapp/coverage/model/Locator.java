@@ -5,12 +5,20 @@ package com.kover.tests.realapp.coverage.model;
  */
 public class Locator {
 
+    private String uuid;
     private String subject;
     private String locator;
+    private String parentUuid;
 
-    public Locator(String subject, String locator) {
+    public Locator(String uuid, String subject, String locator, String parentUuid) {
+        this.uuid = uuid;
         this.subject = subject;
         this.locator = locator;
+        this.parentUuid = parentUuid;
+    }
+
+    public String getUuid() {
+        return uuid;
     }
 
     public String getSubject() {
@@ -21,12 +29,21 @@ public class Locator {
         return locator;
     }
 
+    public void setLocator(String locator) {
+        this.locator = locator;
+    }
+
+    public String getParentUuid() {
+        return parentUuid;
+    }
 
     @Override
     public String toString() {
         return "Locator{" +
-                "subject='" + subject + '\'' +
+                "uuid='" + uuid + '\'' +
+                ", subject='" + subject + '\'' +
                 ", locator='" + locator + '\'' +
+                ", parentUuid='" + parentUuid + '\'' +
                 '}';
     }
 }
