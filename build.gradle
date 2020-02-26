@@ -14,6 +14,8 @@ repositories {
 dependencies {
     compile('org.junit.jupiter:junit-jupiter:5.5.2')
     compile('org.junit.platform:junit-platform-launcher:1.6.0')
+    compile ('com.squareup.retrofit2:retrofit:2.7.2')
+    compile ('com.squareup.retrofit2:converter-gson:2.7.2')
     compile group: 'com.codeborne', name: 'selenide', version: '5.4.1'
 }
 
