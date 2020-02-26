@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.junit.jupiter:junit-jupiter:5.5.2')
+    compile('org.junit.platform:junit-platform-launcher:1.6.0')
+    compile group: 'com.codeborne', name: 'selenide', version: '5.4.1'
+}
+
+test{
+    useJUnitPlatform()
+}
