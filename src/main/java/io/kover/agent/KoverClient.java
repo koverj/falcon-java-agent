@@ -1,6 +1,6 @@
-package com.kover.tests.realapp.coverage;
+package io.kover.agent;
 
-import com.kover.tests.realapp.coverage.service.KoverService;
+import io.kover.agent.service.KoverService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
