@@ -1,9 +1,9 @@
-package com.kover.tests.realapp.coverage.listener;
+package io.kover.agent.listener;
 
-import com.kover.tests.realapp.coverage.KoverClient;
-import com.kover.tests.realapp.coverage.model.Locator;
-import com.kover.tests.realapp.coverage.model.LocatorResult;
-import com.kover.tests.realapp.coverage.SimpleLocatorStorage;
+import io.kover.agent.KoverClient;
+import io.kover.agent.model.Locator;
+import io.kover.agent.model.LocatorResult;
+import io.kover.agent.SimpleLocatorStorage;
 import okhttp3.ResponseBody;
 import org.junit.platform.engine.TestExecutionResult;
 import org.junit.platform.launcher.TestExecutionListener;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class LocatorTestListener implements TestExecutionListener {
 
-    private static final boolean isSendToKover = Boolean.parseBoolean(System.getProperty("use.kover", "true"));
+    private boolean isSendToKover = Boolean.parseBoolean(System.getProperty("use.kover", "true"));
     private final SimpleLocatorStorage storage;
     private final KoverClient koverClient;
 

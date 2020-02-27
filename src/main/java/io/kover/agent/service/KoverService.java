@@ -1,6 +1,6 @@
-package com.kover.tests.realapp.coverage.service;
+package io.kover.agent.service;
 
-import com.kover.tests.realapp.coverage.model.LocatorResult;
+import io.kover.agent.model.LocatorResult;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;

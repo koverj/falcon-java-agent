@@ -1,4 +1,4 @@
-package com.kover.tests.realapp.coverage.model;
+package io.kover.agent.model;
 
 import java.util.List;
 

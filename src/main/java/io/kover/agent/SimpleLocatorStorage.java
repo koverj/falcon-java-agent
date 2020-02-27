@@ -1,6 +1,6 @@
-package com.kover.tests.realapp.coverage;
+package io.kover.agent;
 
-import com.kover.tests.realapp.coverage.model.Locator;
+import io.kover.agent.model.Locator;
 
 import java.util.LinkedList;
 import java.util.Objects;
