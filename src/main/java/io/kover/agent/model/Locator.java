@@ -1,4 +1,4 @@
-package com.kover.tests.realapp.coverage.model;
+package io.kover.agent.model;
 
 /**
  * Created by alpa on 2/25/20

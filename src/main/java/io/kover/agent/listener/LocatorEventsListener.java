@@ -1,9 +1,9 @@
-package com.kover.tests.realapp.coverage.listener;
+package io.kover.agent.listener;
 
 import com.codeborne.selenide.logevents.LogEvent;
 import com.codeborne.selenide.logevents.LogEventListener;
-import com.kover.tests.realapp.coverage.model.Locator;
-import com.kover.tests.realapp.coverage.SimpleLocatorStorage;
+import io.kover.agent.model.Locator;
+import io.kover.agent.SimpleLocatorStorage;
 
 import java.util.LinkedList;
 import java.util.UUID;

@@ -4,7 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.kover.tests.realapp.coverage.listener.LocatorEventsListener;
+import io.kover.agent.listener.LocatorEventsListener;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
