@@ -1,16 +1,13 @@
-package io.kover.agent.listener;
+package io.koverj.agent.listener;
 
-import io.kover.agent.KoverClient;
-import io.kover.agent.model.Locator;
-import io.kover.agent.model.LocatorResult;
-import io.kover.agent.SimpleLocatorStorage;
-import okhttp3.ResponseBody;
+import io.koverj.agent.KoverjClient;
+import io.koverj.agent.model.Locator;
+import io.koverj.agent.model.LocatorResult;
+import io.koverj.agent.SimpleLocatorStorage;
 import org.junit.platform.engine.TestExecutionResult;
 import org.junit.platform.launcher.TestExecutionListener;
 import org.junit.platform.launcher.TestIdentifier;
-import retrofit2.Response;
 
-import java.io.IOException;
 import java.util.List;
 
 
@@ -21,11 +18,11 @@ public class LocatorTestListener implements TestExecutionListener {
 
     private boolean isSendToKover = Boolean.parseBoolean(System.getProperty("use.kover", "true"));
     private final SimpleLocatorStorage storage;
-    private final KoverClient koverClient;
+    private final KoverjClient koverjClient;
 
     public LocatorTestListener() {
         this.storage = SimpleLocatorStorage.getInstance();
-        this.koverClient = new KoverClient();
+        this.koverjClient = new KoverjClient();
     }
 
     @Override
@@ -35,7 +32,7 @@ public class LocatorTestListener implements TestExecutionListener {
             processLocator(locatorResult);
             System.out.println(locatorResult);
             if (isSendToKover) {
-                sendLocatorsResult(locatorResult);
+                koverjClient.sendLocatorsResult(locatorResult);
             }
             storage.clear();
         }
@@ -55,17 +52,4 @@ public class LocatorTestListener implements TestExecutionListener {
         });
     }
 
-    private void sendLocatorsResult(LocatorResult locatorResult) {
-        Response<ResponseBody> responseBody;
-        try {
-            responseBody = koverClient.koverService().postLocators(locatorResult).execute();
-            int code = responseBody.code();
-            if (code != 200) {
-                throw new RuntimeException("Locators not saved: " + code);
-            }
-            System.out.println(responseBody.body().string());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

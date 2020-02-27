@@ -1,6 +1,6 @@
-package io.kover.agent;
+package io.koverj.agent;
 
-import io.kover.agent.model.Locator;
+import io.koverj.agent.model.Locator;
 
 import java.util.LinkedList;
 import java.util.Objects;

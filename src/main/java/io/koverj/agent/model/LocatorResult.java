@@ -1,4 +1,4 @@
-package io.kover.agent.model;
+package io.koverj.agent.model;
 
 import java.util.List;
 

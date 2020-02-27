@@ -1,10 +1,10 @@
-package com.kover.tests.realapp.coverage;
+package com.koverj.realapp.coverage;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.kover.agent.listener.LocatorEventsListener;
+import io.koverj.agent.listener.LocatorEventsListener;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

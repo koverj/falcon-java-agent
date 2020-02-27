@@ -1,9 +1,9 @@
-package io.kover.agent.listener;
+package io.koverj.agent.listener;
 
 import com.codeborne.selenide.logevents.LogEvent;
 import com.codeborne.selenide.logevents.LogEventListener;
-import io.kover.agent.model.Locator;
-import io.kover.agent.SimpleLocatorStorage;
+import io.koverj.agent.model.Locator;
+import io.koverj.agent.SimpleLocatorStorage;
 
 import java.util.LinkedList;
 import java.util.UUID;
