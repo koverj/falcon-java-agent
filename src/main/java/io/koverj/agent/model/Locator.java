@@ -1,4 +1,4 @@
-package io.kover.agent.model;
+package io.koverj.agent.model;
 
 /**
  * Created by alpa on 2/25/20
