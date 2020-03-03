@@ -14,10 +14,9 @@ repositories {
 dependencies {
     compile project(":koverj-java-commons")
     compile project(":selenide-koverj")
-    compile('org.junit.jupiter:junit-jupiter:5.5.2')
-    compile('org.junit.platform:junit-platform-launcher:1.6.0')
+    compile group: 'org.testng', name: 'testng', version: '6.14.3'
 }
 
-test{
-    useJUnitPlatform()
+test {
+    useTestNG()
 }

@@ -1,4 +1,6 @@
 rootProject.name = 'io.koverj.java.agent'
 include 'koverj-java-commons'
+include 'selenide-koverj'
 include 'selenide-junit5'
+include 'selenide-testng'
 

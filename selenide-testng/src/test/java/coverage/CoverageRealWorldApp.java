@@ -5,18 +5,21 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.koverj.agent.selenide.LocatorEventsListener;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import io.koverj.agent.selenide.testng.LocatorTestListener;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 
+@Listeners({LocatorTestListener.class})
 public class CoverageRealWorldApp {
 
     static {
         SelenideLogger.addListener("LocatorEventsListener", new LocatorEventsListener());
     }
 
-    @BeforeAll
+    @BeforeClass
     static void setUp() {
         Configuration.baseUrl = "https://angular.realworld.io";
         Selenide.open(Configuration.baseUrl);

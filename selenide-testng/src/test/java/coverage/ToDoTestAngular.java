@@ -5,10 +5,9 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.koverj.agent.selenide.LocatorEventsListener;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +22,7 @@ public class ToDoTestAngular {
         SelenideLogger.addListener("LocatorEventsListener", new LocatorEventsListener());
     }
 
-    @BeforeAll
+    @BeforeClass
     static void setUp() {
         Configuration.baseUrl = "http://todomvc.com/examples/typescript-angular";
 //        Configuration.browser = "tests.old.RemoteChromeDriverProvider";
@@ -36,7 +35,6 @@ public class ToDoTestAngular {
         Selenide.open("/");
     }
 
-    @Tag("smoke")
     @Test
     void testCanOpenDifferenturl() {
         open();
@@ -47,7 +45,6 @@ public class ToDoTestAngular {
         addTodo("fromActive");
     }
 
-    @Tag("smoke")
     @Test
     public void testCanDestroyTodo() {
         open();
@@ -55,21 +52,18 @@ public class ToDoTestAngular {
         destroyTodo();
     }
 
-    @Tag("smoke")
     @Test
     public void testCanNotAddEmptyTodo() {
         Selenide.open("/");
         addTodo(Keys.ENTER);
     }
 
-    @Tag("smoke")
     @Test
     void testCanAddTodo() {
         open();
         addTodo("demo");
     }
 
-    @Tag("smoke")
     @Test
     void testCanToggleAll() {
         open();
@@ -79,7 +73,6 @@ public class ToDoTestAngular {
         $("body > section > footer > span > strong").shouldHave(Condition.text("0"));
     }
 
-    @Tag("smoke")
     @Test
     void testCanEditTodo() {
         open();
@@ -87,7 +80,6 @@ public class ToDoTestAngular {
         editTodo("edit", "demo", Keys.ENTER);
     }
 
-    @Tag("smoke")
     @Test
     void testCanCancelEditTodo() {
         open();
@@ -96,7 +88,6 @@ public class ToDoTestAngular {
         editTodo("AtoВeEdit", "demo", Keys.ESCAPE);
     }
 
-    @Tag("smoke")
     @Test
     void testTodoDeletedIfEmptyName() {
         open();
@@ -104,7 +95,6 @@ public class ToDoTestAngular {
         editTodo("toEditForEmpty", Keys.BACK_SPACE, Keys.ENTER);
     }
 
-    @Tag("smoke")
     @Test
     public void testCanSwitchActiveAndCompleted() {
         open();
@@ -114,7 +104,6 @@ public class ToDoTestAngular {
         $("body > section > footer > ul > li:nth-child(1) > a").click();
     }
 
-    @Tag("smoke")
     @Test
     void testCanClearCompletedTodo() {
         open();
@@ -125,7 +114,7 @@ public class ToDoTestAngular {
     }
 }
 
-class  ToDoAngular {
+class ToDoAngular {
 
 
     public static void addTodo(String text) {
