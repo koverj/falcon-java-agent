@@ -12,9 +12,9 @@ repositories {
 }
 
 dependencies {
-    compile('org.junit.jupiter:junit-jupiter:5.5.2')
     compile ('com.squareup.retrofit2:retrofit:2.7.2')
     compile ('com.squareup.retrofit2:converter-gson:2.7.2')
+    testCompile('org.junit.jupiter:junit-jupiter:5.5.2')
 }
 
 test{

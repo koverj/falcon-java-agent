@@ -13,11 +13,6 @@ repositories {
 
 dependencies {
     compile project(":koverj-java-commons")
-    compile project(":selenide-koverj")
-    testCompile('org.junit.jupiter:junit-jupiter:5.5.2')
-    testCompile('org.junit.platform:junit-platform-launcher:1.6.0')
-}
-
-test{
-    useJUnitPlatform()
+    compile group: 'com.codeborne', name: 'selenide', version: '5.4.1'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }

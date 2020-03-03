@@ -14,6 +14,7 @@ public class KoverjClient {
 
     private KoverjService koverjService = RetrofitClient.createService(KoverjService.class);
 
+
     public void sendLocatorsResult(LocatorResult locatorResult) {
         Response<ResponseBody> responseBody;
         try {
