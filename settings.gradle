@@ -1,2 +1,4 @@
-rootProject.name = 'kover-java-agent'
+rootProject.name = 'io.koverj.java.agent'
+include 'koverj-java-commons'
+include 'selenide-junit5'
 
