@@ -35,18 +35,6 @@ public class SimpleLocatorStorage {
         storage.clear();
     }
 
-    public void processLocator(LocatorResult locatorResult) {
-        List<Locator> locators = locatorResult.getLocators();
-        locators.forEach(locator -> {
-            String parentUuid = locator.getParentUuid();
-            if (parentUuid != null) {
-//         TODO add checking for css/xpath
-                locators.stream()
-                        .filter(parentLocator -> parentLocator.getUuid().equalsIgnoreCase(parentUuid))
-                        .findFirst()
-                        .ifPresent(value -> locator.setLocator(value.getLocator() + " " + locator.getLocator()));
-            }
-        });
-    }
+
 
 }
