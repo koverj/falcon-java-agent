@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'io.koverj.java.agent'
+group 'io.koverj'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8

@@ -1,10 +1,9 @@
 plugins {
     id 'java'
-    id 'maven-publish'
 }
 
-group 'io.koverj.java.agent'
-version '1.0-SNAPSHOT'
+group 'io.koverj'
+version '1.0'
 
 sourceCompatibility = 1.8
 
@@ -18,22 +17,4 @@ dependencies {
 
 test{
     useJUnitPlatform()
-}
-
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/SergeyPirogov/kover-java-agent")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("PASSWORD")
-            }
-        }
-    }
-    publications {
-        gpr(MavenPublication) {
-            from(components.java)
-        }
-    }
 }
