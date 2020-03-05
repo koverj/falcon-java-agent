@@ -2,7 +2,7 @@ package io.koverj.agent.selenide;
 
 import com.codeborne.selenide.logevents.LogEvent;
 import com.codeborne.selenide.logevents.LogEventListener;
-import io.koverj.agent.java.commons.SimpleLocatorStorage;
+import io.koverj.agent.java.commons.LocatorsLifecycle;
 import io.koverj.agent.java.commons.model.Locator;
 
 import java.util.LinkedList;
@@ -15,10 +15,10 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
  */
 public class LocatorEventsListener implements LogEventListener {
 
-    private final SimpleLocatorStorage storage;
+    private final LocatorsLifecycle lifecycle;
 
     public LocatorEventsListener() {
-        this.storage = SimpleLocatorStorage.getInstance();
+        this.lifecycle = LocatorsLifecycle.getInstance();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class LocatorEventsListener implements LogEventListener {
         if (subject.contains("(") || subject.contains("$")) {
             String currentUrl = getWebDriver().getCurrentUrl();
             String uuid = UUID.randomUUID().toString();
-            LinkedList<Locator> locators = storage.get();
+            LinkedList<Locator> locators = lifecycle.getStorage().get();
             if (!locators.isEmpty()) {
                 Locator previousLocator = locators.getLast();
                 if (previousLocator != null) {
@@ -51,6 +51,6 @@ public class LocatorEventsListener implements LogEventListener {
     }
 
     private void saveLocatorToStorage(String uuid, String url, String subject, String locator, String parentUuid) {
-        storage.put(new Locator(uuid, url, subject, locator, parentUuid));
+        lifecycle.getStorage().put(new Locator(uuid, url, subject, locator, parentUuid));
     }
 }
