@@ -16,8 +16,20 @@ dependencies {
     compile project(":selenide-koverj")
     compile('org.junit.jupiter:junit-jupiter:5.5.2')
     compile('org.junit.platform:junit-platform-launcher:1.6.0')
+    compile('io.qameta.allure:allure-junit5:2.13.2')
 }
 
-test{
+tasks.withType(Test)  {
+
     useJUnitPlatform()
+
+//    testLogging.showStandardStreams = true
+
+    systemProperties = [
+            'junit.jupiter.execution.parallel.enabled': true,
+            'junit.jupiter.extensions.autodetection.enabled': true,
+            'junit.jupiter.execution.parallel.config.strategy': 'fixed',
+            'junit.jupiter.execution.parallel.mode.default': 'concurrent',
+            'junit.jupiter.execution.parallel.config.fixed.parallelism': 2,
+    ]
 }
