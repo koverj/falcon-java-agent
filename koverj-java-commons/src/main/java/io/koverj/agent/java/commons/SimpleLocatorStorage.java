@@ -1,10 +1,8 @@
 package io.koverj.agent.java.commons;
 
 import io.koverj.agent.java.commons.model.Locator;
-import io.koverj.agent.java.commons.model.LocatorResult;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -12,29 +10,18 @@ import java.util.Objects;
  */
 public class SimpleLocatorStorage {
 
-    private final LinkedList<Locator> storage = new LinkedList<>();
-
-    private static SimpleLocatorStorage instance;
-
-    public static SimpleLocatorStorage getInstance() {
-        if (Objects.isNull(instance)) {
-            instance = new SimpleLocatorStorage();
-        }
-        return instance;
-    }
+    private LinkedList<Locator> locators = new LinkedList<>();
 
     public LinkedList<Locator> get() {
-        return storage;
+        return locators;
     }
 
     public void put(Locator locator) {
-        storage.add(locator);
+        locators.add(locator);
     }
 
     public void clear() {
-        storage.clear();
+        locators.clear();
     }
-
-
 
 }
