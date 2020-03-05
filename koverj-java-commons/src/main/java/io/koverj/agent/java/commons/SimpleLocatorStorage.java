@@ -10,36 +10,18 @@ import java.util.Objects;
  */
 public class SimpleLocatorStorage {
 
-    private final Context storage = new Context();
-
-    private static SimpleLocatorStorage instance;
-
-    public static SimpleLocatorStorage getInstance() {
-        if (Objects.isNull(instance)) {
-            instance = new SimpleLocatorStorage();
-        }
-        return instance;
-    }
+    private LinkedList<Locator> locators = new LinkedList<>();
 
     public LinkedList<Locator> get() {
-        return storage.get();
+        return locators;
     }
 
     public void put(Locator locator) {
-        get().add(locator);
+        locators.add(locator);
     }
 
     public void clear() {
-        get().clear();
+        locators.clear();
     }
-
-    private static class Context extends ThreadLocal<LinkedList<Locator>> {
-
-        @Override
-        protected LinkedList<Locator> initialValue() {
-            return new LinkedList<>();
-        }
-    }
-
 
 }

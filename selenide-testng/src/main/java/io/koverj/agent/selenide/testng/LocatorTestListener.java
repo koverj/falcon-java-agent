@@ -13,7 +13,7 @@ public class LocatorTestListener implements IInvokedMethodListener {
     private final LocatorsLifecycle locatorsLifecycle;
 
     public LocatorTestListener() {
-        this.locatorsLifecycle = new LocatorsLifecycle();
+        this.locatorsLifecycle = LocatorsLifecycle.getInstance();
     }
 
     @Override
