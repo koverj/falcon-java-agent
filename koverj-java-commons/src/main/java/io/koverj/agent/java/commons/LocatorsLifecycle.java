@@ -20,6 +20,9 @@ public class LocatorsLifecycle {
         LocatorResult locatorResult = new LocatorResult(testName, storage.get());
         processLocator(locatorResult);
 
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//        System.out.println(gson.toJson(locatorResult));
+
         if (KoverjConfig.isSendToKover) {
             koverjClient.sendLocatorsResult(locatorResult);
         }

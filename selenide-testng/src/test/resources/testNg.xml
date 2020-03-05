@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- TestNG Documentation: http://testng.org/doc/documentation-main.html -->
+<!-- Change "false" to "tests", "methods", "classes" or "instances" for running in parallel. See more details in the TestNG documentation. -->
+<suite name="LeanFTSuite" parallel="methods" thread-count="3" verbose="2">
+    <test name="LeanFtTest">
+        <classes>
+            <class name="coverage.CoverageRealWorldApp" />
+        </classes>
+    </test>
+</suite>

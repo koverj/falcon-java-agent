@@ -1,10 +1,8 @@
 package io.koverj.agent.java.commons;
 
 import io.koverj.agent.java.commons.model.Locator;
-import io.koverj.agent.java.commons.model.LocatorResult;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -12,7 +10,7 @@ import java.util.Objects;
  */
 public class SimpleLocatorStorage {
 
-    private final LinkedList<Locator> storage = new LinkedList<>();
+    private final Context storage = new Context();
 
     private static SimpleLocatorStorage instance;
 
@@ -24,17 +22,24 @@ public class SimpleLocatorStorage {
     }
 
     public LinkedList<Locator> get() {
-        return storage;
+        return storage.get();
     }
 
     public void put(Locator locator) {
-        storage.add(locator);
+        get().add(locator);
     }
 
     public void clear() {
-        storage.clear();
+        get().clear();
     }
 
+    private static class Context extends ThreadLocal<LinkedList<Locator>> {
+
+        @Override
+        protected LinkedList<Locator> initialValue() {
+            return new LinkedList<>();
+        }
+    }
 
 
 }
