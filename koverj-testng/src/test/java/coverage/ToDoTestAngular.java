@@ -4,7 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.koverj.agent.selenide.LocatorEventsListener;
+import io.koverj.agent.selenide.KoverjSelenide;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -19,7 +19,7 @@ import static coverage.ToDoAngular.*;
 public class ToDoTestAngular {
 
     static {
-        SelenideLogger.addListener("LocatorEventsListener", new LocatorEventsListener());
+        SelenideLogger.addListener("LocatorEventsListener", new KoverjSelenide());
     }
 
     @BeforeClass

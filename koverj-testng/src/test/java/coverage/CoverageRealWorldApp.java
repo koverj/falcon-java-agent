@@ -4,7 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.koverj.agent.selenide.LocatorEventsListener;
+import io.koverj.agent.selenide.KoverjSelenide;
 import io.koverj.agent.selenide.testng.LocatorTestListener;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -26,7 +26,7 @@ public class CoverageRealWorldApp {
     @BeforeMethod
     public void before() {
         Selenide.open(Configuration.baseUrl);
-        SelenideLogger.addListener("LocatorEventsListener", new LocatorEventsListener());
+        SelenideLogger.addListener("LocatorEventsListener", new KoverjSelenide());
     }
 
     @Test

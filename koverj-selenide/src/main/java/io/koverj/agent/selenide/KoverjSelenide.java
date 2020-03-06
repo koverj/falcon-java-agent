@@ -13,11 +13,11 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 /**
  * Created by alpa on 2/25/20
  */
-public class LocatorEventsListener implements LogEventListener {
+public class KoverjSelenide implements LogEventListener {
 
     private final LocatorsLifecycle lifecycle;
 
-    public LocatorEventsListener() {
+    public KoverjSelenide() {
         this.lifecycle = LocatorsLifecycle.getInstance();
     }
 
