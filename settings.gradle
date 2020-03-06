@@ -1,4 +1,3 @@
-rootProject.name = 'koverj-java-agent'
 include 'koverj-java-commons'
 include 'koverj-selenide'
 include 'koverj-junit5'

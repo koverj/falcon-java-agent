@@ -2,9 +2,6 @@ plugins {
     id "io.freefair.lombok" version "5.0.0-rc4"
 }
 
-group 'io.koverj'
-version '1.0-SNAPSHOT'
-
 dependencies {
     compile ('com.squareup.retrofit2:retrofit:2.7.2')
     compile ('com.squareup.retrofit2:converter-gson:2.7.2')
