@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class CoverageRealWorldApp {
 
@@ -22,42 +23,64 @@ public class CoverageRealWorldApp {
     @BeforeEach
     void beforeEach() {
         SelenideLogger.addListener("LocatorEventsListener", new LocatorEventsListener());
+        Selenide.open(Configuration.baseUrl);
     }
 
     @Test
-    void testSimpleLocators() {
-        Selenide.open(Configuration.baseUrl);
-
-        $("body > app-root > app-layout-header > nav > div > ul > li:nth-child(2) > a").click();
-        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > fieldset:nth-child(2) > input").setValue("sergio_89@ukr.net");
-        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > fieldset:nth-child(3) > input").setValue("12345678");
-        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > button").click();
+    void testSimpleCssLocators() {
+        $("[href='/login']").click();
+        $("[formcontrolname='email']").setValue("sergio_89@ukr.net");
+        $("[formcontrolname='password']").setValue("12345678");
+        $("[type='submit']").click();
     }
 
     @Test
-    void testRelativeLocators() {
-        Selenide.open(Configuration.baseUrl);
+    void testSimpleXpathLocators() {
+        $x("//*[@href='/login']").click();
+        $x("//*[@formcontrolname='email']").setValue("sergio_89@ukr.net");
+        $x("//*[@formcontrolname='password']").setValue("12345678");
+        $x("//button[@type='submit']").click();
+    }
 
+    @Test
+    void testRelativeCssLocators() {
         SelenideElement appRootElement = $("body > app-root");
         SelenideElement navBarElement = appRootElement.$("app-layout-header > nav");
-        SelenideElement link = navBarElement.$("div > ul > li:nth-child(2) > a");
+        SelenideElement link = navBarElement.$("[href='/login']");
         link.click();
     }
 
     @Test
-    void testSimpleAndRelativeLocators() {
-        Selenide.open(Configuration.baseUrl);
+    void testRelativeXpathLocators() {
+        SelenideElement appRootElement = $x("//body//app-root");
+        SelenideElement navBarElement = appRootElement.$x(".//app-layout-header//nav");
+        SelenideElement link = navBarElement.$x(".//*[@href='/login']");
+        link.click();
+    }
 
-        $("body > app-root > app-layout-header > nav > div > ul > li:nth-child(2) > a").click();
-        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > fieldset:nth-child(2) > input").setValue("sergio_89@ukr.net");
-        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > fieldset:nth-child(3) > input").setValue("12345678");
-        $("body > app-root > app-auth-page > div > div > div > div > form > fieldset > button").click();
-
-
+    @Test
+    void testSimpleAndRelativeCssLocators() {
+        $("[href='/login']").click();
+        $("[formcontrolname='email']").setValue("sergio_89@ukr.net");
+        $("[formcontrolname='password']").setValue("12345678");
+        $("[type='submit']").click();
 
         SelenideElement appRootElement = $("body > app-root");
         SelenideElement navBarElement = appRootElement.$("app-layout-header > nav");
-        SelenideElement link = navBarElement.$("div > ul > li:nth-child(2) > a");
+        SelenideElement link = navBarElement.$("[href='/login']");
+        link.click();
+    }
+
+    @Test
+    void testSimpleAndRelativeXpathLocators() {
+        $x("//*[@href='/login']").click();
+        $x("//*[@formcontrolname='email']").setValue("sergio_89@ukr.net");
+        $x("//*[@formcontrolname='password']").setValue("12345678");
+        $x("//button[@type='submit']").click();
+
+        SelenideElement appRootElement = $x("//body//app-root");
+        SelenideElement navBarElement = appRootElement.$x(".//app-layout-header//nav");
+        SelenideElement link = navBarElement.$x(".//*[@href='/login']");
         link.click();
     }
 }
