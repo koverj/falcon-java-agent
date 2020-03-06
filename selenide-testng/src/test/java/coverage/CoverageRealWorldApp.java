@@ -31,6 +31,8 @@ public class CoverageRealWorldApp {
 
     @Test
     void testSimpleCssLocators() {
+        Selenide.open(Configuration.baseUrl);
+
         $("[href='/login']").click();
         $("[formcontrolname='email']").setValue("sergio_89@ukr.net");
         $("[formcontrolname='password']").setValue("12345678");
@@ -47,6 +49,7 @@ public class CoverageRealWorldApp {
 
     @Test
     void testRelativeCssLocators() {
+        Selenide.open(Configuration.baseUrl);
         SelenideElement appRootElement = $("body > app-root");
         SelenideElement navBarElement = appRootElement.$("app-layout-header > nav");
         SelenideElement link = navBarElement.$("[href='/login']");
