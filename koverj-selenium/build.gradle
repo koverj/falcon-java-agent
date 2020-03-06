@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'io.koverj'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":koverj-java-commons")
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.8.1'
+    testCompile project(":koverj-junit5")
+
+}
+
+test {
+    useJUnitPlatform()
+}
