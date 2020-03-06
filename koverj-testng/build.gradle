@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     compile project(":koverj-java-commons")
-    compile project(":selenide-koverj")
+    compile project(":koverj-selenide")
     compile group: 'org.testng', name: 'testng', version: '6.14.3'
 }
 
