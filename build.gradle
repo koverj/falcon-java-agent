@@ -1,9 +1,8 @@
 subprojects {
     apply plugin: "java"
+    apply plugin: 'maven-publish'
 
-
-    group 'io.koverj'
-    version '1.0'
+    archivesBaseName = project.name
 
     sourceCompatibility = 1.8
 
@@ -13,6 +12,24 @@ subprojects {
 
     dependencies {
         testImplementation('org.junit.jupiter:junit-jupiter:5.5.2')
+    }
+
+    publishing {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/SergeyPirogov/koverj-java-agent")
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("GH_USER")
+                    password = project.findProperty("gpr.key") ?: System.getenv("GH_TOKEN")
+                }
+            }
+        }
+        publications {
+            gpr(MavenPublication) {
+                from(components.java)
+            }
+        }
     }
 }
 

@@ -1,16 +1,3 @@
-plugins {
-    id 'java'
-}
-
-group 'io.koverj.java.agent'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     compile project(":koverj-java-commons")
     compile project(":koverj-selenide")
