@@ -22,6 +22,9 @@ public class SeleniumLocatorsTest {
 
         driver.findElement(By.cssSelector("body > app-root > app-layout-header > nav > div > ul > li:nth-child(2) > a"));
 
+        driver.findElement(By.cssSelector("body > app-root"))
+                .findElement(By.cssSelector("app-layout-header > nav"));
+
         driver.quit();
     }
 }
