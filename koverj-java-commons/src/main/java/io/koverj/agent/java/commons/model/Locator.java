@@ -1,8 +1,17 @@
 package io.koverj.agent.java.commons.model;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  * Created by alpa on 2/25/20
  */
+@Builder
+@Getter
+@Setter
+@ToString
 public class Locator {
 
     private String uuid;
@@ -17,40 +26,5 @@ public class Locator {
         this.subject = subject;
         this.locator = locator;
         this.parentUuid = parentUuid;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public String getLocator() {
-        return locator;
-    }
-
-    public void setLocator(String locator) {
-        this.locator = locator;
-    }
-
-    public String getParentUuid() {
-        return parentUuid;
-    }
-
-    @Override
-    public String toString() {
-        return "Locator{" +
-                "uuid='" + uuid + '\'' +
-                ", url='" + url + '\'' +
-                ", subject='" + subject + '\'' +
-                ", locator='" + locator + '\'' +
-                ", parentUuid='" + parentUuid + '\'' +
-                '}';
     }
 }

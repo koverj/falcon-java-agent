@@ -1,5 +1,7 @@
 package io.koverj.agent.java.commons;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.koverj.agent.java.commons.config.KoverjConfig;
 import io.koverj.agent.java.commons.model.Locator;
 import io.koverj.agent.java.commons.model.LocatorResult;
@@ -28,9 +30,11 @@ public class LocatorsLifecycle {
     public void sendLocators(String testName){
         LocatorResult locatorResult = new LocatorResult(testName, getStorage().get());
         processLocator(locatorResult);
-        System.out.println(locatorResult);
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        System.out.println(gson.toJson(locatorResult));
+
+        if (KoverjConfig.logLocators) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            System.out.println(gson.toJson(locatorResult));
+        }
 
         if (KoverjConfig.isSendToKover) {
             koverjClient.sendLocatorsResult(locatorResult);
