@@ -5,7 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.koverj.agent.selenide.KoverjSelenide;
-import io.koverj.agent.selenide.testng.LocatorTestListener;
+import io.koverj.agent.selenide.testng.KoverjListener;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-@Listeners({LocatorTestListener.class})
+@Listeners({KoverjListener.class})
 public class CoverageRealWorldApp {
 
     @BeforeClass

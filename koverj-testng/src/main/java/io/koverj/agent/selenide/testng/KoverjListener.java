@@ -8,11 +8,11 @@ import org.testng.ITestResult;
 /**
  * Created by alpa on 3/3/20
  */
-public class LocatorTestListener implements IInvokedMethodListener {
+public class KoverjListener implements IInvokedMethodListener {
 
     private final LocatorsLifecycle locatorsLifecycle;
 
-    public LocatorTestListener() {
+    public KoverjListener() {
         this.locatorsLifecycle = LocatorsLifecycle.getInstance();
     }
 
