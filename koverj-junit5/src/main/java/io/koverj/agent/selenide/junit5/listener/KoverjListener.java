@@ -9,11 +9,11 @@ import org.junit.platform.launcher.TestIdentifier;
 /**
  * Created by alpa on 2/25/20
  */
-public class LocatorTestListener implements TestExecutionListener {
+public class KoverjListener implements TestExecutionListener {
 
     private final LocatorsLifecycle locatorsLifecycle;
 
-    public LocatorTestListener() {
+    public KoverjListener() {
         this.locatorsLifecycle = LocatorsLifecycle.getInstance();
     }
 
