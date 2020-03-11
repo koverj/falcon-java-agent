@@ -10,6 +10,10 @@ repositories {
 
     maven {
         url = 'https://maven.pkg.github.com/SergeyPirogov/koverj-java-agent'
+        credentials {
+                username = "GH_USERNAME"
+                password = "TOKEN"
+        }
     }
 }
 
