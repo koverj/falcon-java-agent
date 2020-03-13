@@ -27,8 +27,8 @@ public class LocatorsLifecycle {
         return instance;
     }
 
-    public void sendLocators(String testName){
-        LocatorResult locatorResult = new LocatorResult(testName, getStorage().get());
+    public void sendLocators(String buildId, String testName){
+        LocatorResult locatorResult = new LocatorResult(buildId, testName, getStorage().get());
         processLocator(locatorResult);
 
         if (KoverjConfig.logLocators) {
