@@ -4,6 +4,8 @@ import com.codeborne.selenide.logevents.LogEvent;
 import com.codeborne.selenide.logevents.LogEventListener;
 import io.koverj.agent.java.commons.LocatorsLifecycle;
 import io.koverj.agent.java.commons.model.Locator;
+import org.apache.commons.lang3.StringUtils;
+import org.openqa.selenium.support.ui.Quotes;
 
 import java.util.LinkedList;
 import java.util.UUID;
@@ -34,23 +36,37 @@ public class KoverjSelenide implements LogEventListener {
             String currentUrl = getWebDriver().getCurrentUrl();
             String uuid = UUID.randomUUID().toString();
             LinkedList<Locator> locators = lifecycle.getStorage().get();
+            String element = currentLog.getElement();
+            if (isTextLocator(element)) {
+                element = convertByTextLocator(element);
+            }
             if (!locators.isEmpty()) {
                 Locator previousLocator = locators.getLast();
                 if (previousLocator != null) {
                     if (previousLocator.getSubject().contains("$")) {
                         String parentUuid = previousLocator.getUuid();
-                        saveLocatorToStorage(uuid, currentUrl, subject, currentLog.getElement(), parentUuid);
+                        saveLocatorToStorage(uuid, currentUrl, subject, element, parentUuid);
                     } else {
-                        saveLocatorToStorage(uuid, currentUrl, subject, currentLog.getElement(), null);
+                        saveLocatorToStorage(uuid, currentUrl, subject, element, null);
                     }
                 }
             } else {
-                saveLocatorToStorage(uuid, currentUrl, subject, currentLog.getElement(), null);
+                saveLocatorToStorage(uuid, currentUrl, subject, element, null);
             }
         }
     }
 
     private void saveLocatorToStorage(String uuid, String url, String subject, String locator, String parentUuid) {
         lifecycle.getStorage().put(new Locator(uuid, url, subject, locator, parentUuid));
+    }
+
+    private String convertByTextLocator(String element) {
+        String normalizeSpaceXpath = "normalize-space(translate(string(.), '\t\n\r\u00a0', '    '))";
+        String elementText = StringUtils.substringAfter(element, ": ");
+        return ".//*/text()[" + normalizeSpaceXpath + " = " + Quotes.escape(elementText) + "]/parent::*";
+    }
+
+    private boolean isTextLocator(String element) {
+        return element.contains("by text") || element.contains("with text");
     }
 }
