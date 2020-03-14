@@ -30,7 +30,7 @@ public class LocatorConverter {
             case TAG_NAME:
             case CSS:
             case XPATH:
-                return getLocatorValue(locator);
+                return getLocatorValueForCssAndXpath(locator);
 
             default:
                 return locator;
@@ -101,6 +101,12 @@ public class LocatorConverter {
 
     private static String getLocatorValue(String element) {
         return StringUtils.substringAfter(element, ": ");
+    }
+
+    private static String getLocatorValueForCssAndXpath(String element) {
+        return element
+                .replaceAll("By.cssSelector:", "")
+                .replaceAll("By.xpath:", "");
     }
 
     /**
