@@ -5,7 +5,7 @@
 <suite name="LeanFTSuite" parallel="methods" thread-count="3" verbose="2">
     <test name="LeanFtTest">
         <classes>
-            <class name="coverage.CoverageRealWorldApp" />
+            <class name="CoverageRealWorldApp" />
         </classes>
     </test>
 </suite>

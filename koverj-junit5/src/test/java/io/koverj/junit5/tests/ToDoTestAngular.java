@@ -1,4 +1,4 @@
-package coverage;
+package io.koverj.junit5.tests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static coverage.ToDoAngular.*;
+import static io.koverj.junit5.tests.ToDoAngular.*;
 
 public class ToDoTestAngular {
 

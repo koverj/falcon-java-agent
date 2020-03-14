@@ -1,33 +1,38 @@
-package coverage;
+package io.koverj.testng.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.koverj.agent.selenide.KoverjSelenide;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.koverj.agent.selenide.testng.KoverjListener;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
+@Listeners({KoverjListener.class})
 public class CoverageRealWorldApp {
 
-    @BeforeAll
+    @BeforeClass
     static void setUp() {
         Configuration.baseUrl = "https://angular.realworld.io";
         Selenide.open(Configuration.baseUrl);
     }
 
-    @BeforeEach
-    void beforeEach() {
-        SelenideLogger.addListener("LocatorEventsListener", new KoverjSelenide());
+    @BeforeMethod
+    public void before() {
         Selenide.open(Configuration.baseUrl);
+        SelenideLogger.addListener("LocatorEventsListener", new KoverjSelenide());
     }
 
     @Test
     void testSimpleCssLocators() {
+        Selenide.open(Configuration.baseUrl);
+
         $("[href='/login']").click();
         $("[formcontrolname='email']").setValue("sergio_89@ukr.net");
         $("[formcontrolname='password']").setValue("12345678");
@@ -44,6 +49,7 @@ public class CoverageRealWorldApp {
 
     @Test
     void testRelativeCssLocators() {
+        Selenide.open(Configuration.baseUrl);
         SelenideElement appRootElement = $("body > app-root");
         SelenideElement navBarElement = appRootElement.$("app-layout-header > nav");
         SelenideElement link = navBarElement.$("[href='/login']");
