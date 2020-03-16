@@ -1,0 +1,8 @@
+dependencies {
+    compile project(":koverj-selenide")
+    compile project(":koverj-junit5")
+}
+
+test{
+    useJUnitPlatform()
+}

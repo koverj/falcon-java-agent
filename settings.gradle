@@ -3,4 +3,5 @@ include 'koverj-selenide'
 include 'koverj-junit5'
 include 'koverj-testng'
 include 'koverj-selenium'
+include 'koverj-selenide-demo'
 
