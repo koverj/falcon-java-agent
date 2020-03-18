@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitClient {
 
-    private static final String KOVERJ_URL = System.getProperty("koverj.url", "http://localhost:8086");
+    private static final String KOVERJ_URL = System.getProperty("koverj.url", "http://localhost:8090");
 
     public static <T> T createService(final Class<T> service) {
         return  new Retrofit.Builder()

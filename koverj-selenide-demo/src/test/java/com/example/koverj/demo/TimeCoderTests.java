@@ -193,4 +193,13 @@ public class TimeCoderTests {
         $("#defaultCheck0").click();
         $("body > app-root > app-layout > div > app-link-themes > div > div > form > button").click();
     }
+
+    @Test
+    void testCanNavigateFromEpisodeToTopics() {
+        login();
+        $("body > app-root > app-layout > div > app-episode-list > div > div > ul > li:nth-child(1) > span").click();
+        $("#navbarTogglerDemo01 > ul > li:nth-child(4) > button").click();
+        $("body > app-root > app-layout > div > app-propose-theme > div:nth-child(1) > div.col-8.mb-2 > form > div > label")
+                .shouldHave(text("Topic for the next QAGuild podcast episode"));
+    }
 }
