@@ -47,7 +47,7 @@ Supported test runners:
 In order to collect data you have to run koverj server:
 
 ```
-docker run -p 8086:8086 spirogov/koverj
+docker run -p 8086:8086 spirogov/koverj:0.0.9
 ```
 
 Run test as you did before
