@@ -1,6 +1,7 @@
 package io.koverj.agent.selenium;
 
 import io.koverj.agent.java.commons.LocatorsLifecycle;
+import io.koverj.agent.java.commons.converter.LocatorConverter;
 import io.koverj.agent.java.commons.model.Locator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +24,7 @@ public class WebDriverLocatorListener extends LocatorEventListener {
 
         Locator locator = Locator.builder()
                 .uuid(uuid)
-                .locator(by.toString())
+                .locator(LocatorConverter.convertLocator(by.toString()))
                 .url(currentUrl)
                 .build();
 
